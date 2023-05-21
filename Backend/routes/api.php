@@ -16,3 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/employees', 'EmployeeController@get');
+
+$router->get('/educationLevels', 'EducationLevelController@get');
