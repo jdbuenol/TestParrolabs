@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Employee;
 use App\Models\EducationLevel;
-use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
@@ -25,14 +24,12 @@ class EmployeeFactory extends Factory
     {
         $randomEducationLevel = EducationLevel::inRandomOrder()->first()->getId();
         $birthDate = $this->faker->dateTimeBetween('-50 years', '-18 years');
-        print($birthDate->format('Y-m-d').'\n');
         $name = $this->faker->name;
-        print($name.'\n\n');
         return [
             'name' => $name,
-            'birthDate' => $birthDate,
+            'birthDate' => date('Y-m-d', strtotime($birthDate->format('Y-m-d'))),
             'education_level_id' => $randomEducationLevel,
-            'recordDate' => $this->faker->dateTimeBetween($birthDate->modify('+18 years')->format('Y-m-d') , 'now')
+            'recordDate' => $this->faker->dateTimeBetween($birthDate->modify('+18 years')->format('Y-m-d'), 'now')
         ];
     }
 }

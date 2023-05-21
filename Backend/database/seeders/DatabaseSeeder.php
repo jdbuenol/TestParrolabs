@@ -6,13 +6,16 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 const EDUCATION_LEVEL_CONCEPTS = [
-    'Bachillerato incompleto',
-    'Bachillerato completo',
-    'Educación tecnica incompleta',
-    'Educación tecnica completa',
-    'Educación profesional incompleta',
-    'Educación profesional completa',
-    'Posgrado'
+    'incomplete primary school',
+    'complete primary school',
+    'incomplete middle school',
+    'complete middle school',
+    'incomplete secondary school',
+    'complete secondary school',
+    'incomplete undergraduate',
+    'complete undergraduate',
+    'incomplete graduate',
+    'complete graduate'
 ];
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +32,10 @@ class DatabaseSeeder extends Seeder
                 \App\Models\EducationLevel::create(['concept' => EDUCATION_LEVEL_CONCEPTS[$i]]);
             }
         }
+        if(! \App\Models\Company::exists()){
+            \App\Models\Company::factory(10)->create();
+        }
         \App\Models\Employee::factory(10)->create();
+        \App\Models\Position::factory(25)->create();
     }
 }

@@ -12,5 +12,5 @@ class BaseModel extends Model
      * Base Model for other models to extend
      */
 
-     public $timestamps = false;
+    public $timestamps = false;
 }
