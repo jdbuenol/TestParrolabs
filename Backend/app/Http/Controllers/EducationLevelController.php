@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
-use Illuminate\Http\Request;
 use App\Models\EducationLevel;
 
 class EducationLevelController extends BaseController
 {
-    function get()
+    function readEducationLevel()
     {
         $allEducationLevels = EducationLevel::all();
         return $allEducationLevels;

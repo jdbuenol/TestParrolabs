@@ -15,12 +15,12 @@ class Employee extends BaseModel
     * $this->birthDate - Date - contains the birth date of the employee
     * $this->recordDate - Date - contains the date in which the employee was registered into the system
     * 
-    * $this->educationLevelID - int - contains the foreign key of EducationLevel
+    * $this->education_level_id - int - contains the foreign key of EducationLevel
     * $this->educationLevel - EducationLevel - contains the object EducationLevel
     * $this->positions - Position[] - contains all the positions this employee has been employed to
     */
 
-   protected $fillable = ['name', 'birthDate', 'educationLevelId', 'recordDate'];
+   protected $fillable = ['name', 'birthDate', 'education_level_id', 'recordDate'];
 
    function getId()
    {

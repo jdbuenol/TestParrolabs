@@ -27,15 +27,18 @@ class PositionFactory extends Factory
     public function definition()
     {
         $randomCompany = Company::inRandomOrder()->first()->getId();
-        $randomFloat = rand() / getrandmax();
 
         $randomEmployeeId = null;
         $startDate = null;
+        $endDate = null;
 
-        if($randomFloat > 0.8){
+        if(rand() / getrandmax() > 0.8){
             $randomEmployee = Employee::inRandomOrder()->first();
             $randomEmployeeId = $randomEmployee->getId();
             $startDate = $this->faker->dateTimeBetween($randomEmployee->getRecordDate(), 'now');
+            if(rand() / getrandmax() > 0.8){
+                $endDate = $this->faker->dateTimeBetween($startDate->format('Y-m-d'), 'now');
+            }
         }
 
         return [
@@ -43,6 +46,7 @@ class PositionFactory extends Factory
             'yearsExperience' => random_int(0, 10),
             'salary' => random_int(12, 90) * 100_000,
             'startDate' => $startDate,
+            'endDate' => $endDate,
             'company_id' => $randomCompany,
             'employee_id' => $randomEmployeeId
         ];

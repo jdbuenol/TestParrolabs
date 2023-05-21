@@ -13,10 +13,44 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// Employees CRUD
 
-$router->get('/employees', 'EmployeeController@get');
+$router->get('/employees', 'EmployeeController@readEmployees');
 
-$router->get('/educationLevels', 'EducationLevelController@get');
+$router->get('/employees/{id}', 'EmployeeController@readEmployee');
+
+$router->post('/employees', 'EmployeeController@createEmployee');
+
+$router->put('/employees/{id}', 'EmployeeController@updateEmployee');
+
+$router->delete('/employees/{id}', 'EmployeeController@deleteEmployee');
+
+// Get Education Levels
+
+$router->get('/educationLevels', 'EducationLevelController@readEducationLevel');
+
+// Companies CRUD
+
+$router->get('/companies', 'CompanyController@readCompanies');
+
+$router->get('/companies/{id}', 'CompanyController@readCompany');
+
+$router->post('/companies', 'CompanyController@createCompany');
+
+$router->put('/companies/{id}', 'CompanyController@updateCompany');
+
+$router->delete('/companies/{id}', 'CompanyController@deleteCompany');
+
+// Positions CRUD
+
+$router->get('/positions', 'PositionController@readPositions');
+
+$router->get('/positions/{id}', 'PositionController@readPosition');
+
+$router->post('/positions', 'PositionController@createPosition');
+
+$router->put('/positions/{id}', 'PositionController@updatePosition');
+
+$router->put('/positions/{id}/endContract', 'PositionController@endContract');
+
+$router->delete('/positions/{id}', 'PositionController@deletePosition');
