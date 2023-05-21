@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Employee extends Model
+{
+    /**
+     * Employee Attributes
+     * $this->id - int - contains the Employee primary key (id)
+     * $this->name - string - contains the name of the employee
+     * $this->birthDate - Date - contains the birth date of the employee
+     * $this->educationLevelID - int - contains the foreign key of EducationLevel
+     * $this->educationLevel - EducationLevel - contains the object EducationLevel
+     * $this->recordDate - Date - contains the date in which the employee was registered into the system
+     */
+
+     protected $fillable = ['name', 'birthDate', 'educationLevelId', 'recordDate'];
+
+     function getId()
+     {
+        return $this->id;
+     }
+
+     function getName()
+     {
+        return $this->name;
+     }
+
+     function setName($name)
+     {
+        $this->name = $name;
+     }
+
+     function getBirthDate()
+     {
+        return $this->birthDate;
+     }
+
+     function setBirthDate($birthDate)
+     {
+        $this->birthDate = $birthDate;
+     }
+
+     function getEducationLevel()
+     {
+        return $this->educationLevel;
+     }
+
+     function getEducationLevelId()
+     {
+        return $this->education_level_id;
+     }
+
+     function setEducationLevelId($education_level_id)
+     {
+        $this->education_level_id = $education_level_id;
+     }
+
+     function getRecordDate()
+     {
+        return $this->recordDate;
+     }
+
+     function setRecordDate($recordDate)
+     {
+        $this->recordDate = $recordDate;
+     }
+}
