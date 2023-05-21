@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('birthDate');
-            $table->foreignId('education_level_id')->constrained()->onDelete('cascade');
             $table->date('recordDate');
+            $table->foreignId('education_level_id')->constrained()->onDelete('cascade');
         });
     }
 
