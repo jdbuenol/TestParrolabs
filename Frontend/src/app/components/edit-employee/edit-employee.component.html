@@ -3,8 +3,8 @@
     <div class="row">
         <!-- Form -->
         <div class="col-md-12 text-center">
-            <h3><b>Add Employee</b></h3>
-            <form [formGroup]="employeeForm" (ngSubmit)="submitForm()" novalidate style="display: flex; flex-direction: column;">
+            <h3><b>Edit Employee</b></h3>
+            <form [formGroup]="updateEmployeeForm" (ngSubmit)="submitForm()" novalidate style="display: flex; flex-direction: column;">
                 <mat-form-field>
                     <mat-label>Employee Name</mat-label>
                     <input matInput type="text" formControlName="employee_name" maxlength="255" style="margin-top: 5px">

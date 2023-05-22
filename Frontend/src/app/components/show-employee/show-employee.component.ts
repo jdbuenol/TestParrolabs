@@ -3,7 +3,6 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { EducationLevelService } from 'src/app/services/education-level.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Result } from 'src/app/shared/result';
-import { Position } from 'src/app/shared/position';
 import { EducationLevel } from 'src/app/shared/educationLevel';
 
 @Component({

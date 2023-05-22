@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyService } from './services/company.service';
 import { EmployeeService } from './services/employee.service';
 import { EducationLevelService } from './services/education-level.service';
+import { PositionService } from './services/position.service';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ShowCompaniesComponent } from './components/show-companies/show-companies.component';
@@ -27,7 +28,8 @@ import { EditCompanyComponent } from './components/edit-company/edit-company.com
 import { ShowEmployeesComponent } from './components/show-employees/show-employees.component';
 import { ShowEmployeeComponent } from './components/show-employee/show-employee.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
-
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { ShowPositionsComponent } from './components/show-positions/show-positions.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
     EditCompanyComponent,
     ShowEmployeesComponent,
     ShowEmployeeComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    ShowPositionsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
     MatSelectModule,
     BrowserAnimationsModule
   ],
-  providers: [CompanyService, EmployeeService, EducationLevelService],
+  providers: [CompanyService, EmployeeService, EducationLevelService, PositionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

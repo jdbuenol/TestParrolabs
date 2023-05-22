@@ -15,7 +15,7 @@ export class AddEmployeeComponent implements OnInit{
   educationLevels: EducationLevel[];
   nameError: string = "";
   birthDateError: string = "";
-  educationLevelErrror: string = "";
+  educationLevelError: string = "";
 
   ngOnInit(): void {
     this.loadEducationLevels();
@@ -57,7 +57,7 @@ export class AddEmployeeComponent implements OnInit{
     }, (error) => {
       this.nameError = error.error.name;
       this.birthDateError = error.error.birthDate;
-      this.educationLevelErrror = error.error.education_level_id;
+      this.educationLevelError = error.error.education_level_id;
     });
   }
 }
