@@ -17,7 +17,7 @@ class EmployeeController extends BaseController
 
     function readEmployee(int $id)
     {
-        $employee = Employee::find($id);
+        $employee = Employee::with(['positions'])->find($id);
         if($employee == null){
             return response([
                 'error' => "NotFound",

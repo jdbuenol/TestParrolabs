@@ -32,7 +32,7 @@ export class EducationLevelService {
     }
     console.log(errMsg);
     return throwError(() => {
-      return errMsg;
+      return error;
     });
   }
 }

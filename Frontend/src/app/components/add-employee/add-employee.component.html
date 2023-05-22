@@ -1,0 +1,33 @@
+<app-toolbar></app-toolbar>
+<div class="container wrapper wrapper2">
+    <div class="row">
+        <!-- Form -->
+        <div class="col-md-12 text-center">
+            <h3><b>Add Employee</b></h3>
+            <form [formGroup]="employeeForm" (ngSubmit)="submitForm()" novalidate style="display: flex; flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>Employee Name</mat-label>
+                    <input matInput type="text" formControlName="employee_name" maxlength="255" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{nameError}}</p>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Birth Date</mat-label>
+                    <input matInput type="date" min="1900-01-01" formControlName="employee_birth_date" maxlength="80" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{birthDateError}}</p>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Education Level</mat-label>
+                    <mat-select formControlName="education_level_id">
+                        <mat-option *ngFor="let educationLevel of educationLevels" value="{{educationLevel.id}}">{{educationLevel.concept}}</mat-option>
+                    </mat-select>
+                    <p class="ErrorMessage">{{educationLevelErrror}}</p>
+                </mat-form-field>
+
+                <button mat-fab extended color="primary" style="width: 300px; align-self: center;">
+                    Submit
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

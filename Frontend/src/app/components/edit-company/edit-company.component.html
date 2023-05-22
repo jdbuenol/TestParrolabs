@@ -8,14 +8,17 @@
                 <mat-form-field>
                     <mat-label>Company Name</mat-label>
                     <input matInput type="text" formControlName="company_name" maxlength="40" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{nameError}}</p>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Company Address</mat-label>
                     <input matInput type="text" formControlName="company_address" maxlength="80" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{addressError}}</p>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Company Zip Code</mat-label>
                     <input matInput type="text" formControlName="company_zip_code" maxlength="10" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{zipCodeError}}</p>
                 </mat-form-field>
 
                 <button mat-fab extended color="primary" style="width: 300px; align-self: center;">

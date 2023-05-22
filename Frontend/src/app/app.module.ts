@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CompanyService } from './services/company.service';
@@ -24,6 +25,8 @@ import { ShowCompanyComponent } from './components/show-company/show-company.com
 import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { ShowEmployeesComponent } from './components/show-employees/show-employees.component';
+import { ShowEmployeeComponent } from './components/show-employee/show-employee.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { ShowEmployeesComponent } from './components/show-employees/show-employe
     ToolbarComponent,
     AddCompanyComponent,
     EditCompanyComponent,
-    ShowEmployeesComponent
+    ShowEmployeesComponent,
+    ShowEmployeeComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { ShowEmployeesComponent } from './components/show-employees/show-employe
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     BrowserAnimationsModule
   ],
   providers: [CompanyService, EmployeeService, EducationLevelService],

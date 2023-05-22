@@ -8,8 +8,12 @@ import { Router } from '@angular/router';
   templateUrl: './add-company.component.html',
   styleUrls: ['./add-company.component.css']
 })
+
 export class AddCompanyComponent implements OnInit {
   companyForm: FormGroup;
+  nameError: string = "";
+  addressError: string = "";
+  zipCodeError: string = "";
 
   ngOnInit(): void {
     this.addCompany();
@@ -40,6 +44,10 @@ export class AddCompanyComponent implements OnInit {
     this.companyService.CreateCompany(company_data).subscribe((res) => {
       console.log("Company Added!");
       this.ngZone.run(() => this.router.navigateByUrl('/show-companies'));
+    }, (error) => {
+      this.nameError = error.error.name;
+      this.addressError = error.error.address;
+      this.zipCodeError = error.error.zipCode;
     });
   }
 }

@@ -5,6 +5,8 @@ import { ShowCompanyComponent } from './components/show-company/show-company.com
 import { AddCompanyComponent } from './components/add-company/add-company.component';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { ShowEmployeesComponent } from './components/show-employees/show-employees.component';
+import { ShowEmployeeComponent } from './components/show-employee/show-employee.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'show-companies'},
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'show-company/:id', component: ShowCompanyComponent },
   { path: 'add-company', component: AddCompanyComponent },
   { path: 'edit-company/:id', component: EditCompanyComponent },
-  { path: 'show-employees', component: ShowEmployeesComponent }
+  { path: 'show-employees', component: ShowEmployeesComponent },
+  { path: 'show-employee/:id', component: ShowEmployeeComponent },
+  { path: 'add-employee', component: AddEmployeeComponent }
 ];
 
 @NgModule({

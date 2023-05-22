@@ -12,6 +12,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditCompanyComponent implements OnInit{
   id: number;
   updateCompanyForm: FormGroup;
+  nameError: string = "";
+  addressError: string = "";
+  zipCodeError: string = "";
 
   ngOnInit(): void {
     this.updateForm();
@@ -52,6 +55,10 @@ export class EditCompanyComponent implements OnInit{
     this.companyService.UpdateCompany(this.id, companyData).subscribe(res => {
       console.log("Company Updated!");
       this.ngZone.run(() => this.router.navigateByUrl('/show-company/' + this.id));
+    }, (error) => {
+      this.nameError = error.error.name;
+      this.addressError = error.error.address;
+      this.zipCodeError = error.error.zipCode;
     });
   }
 }

@@ -4,7 +4,7 @@ export class Employee{
     id?: number;
     name: string;
     birthDate: Date;
-    recordDate: Date;
+    recordDate?: Date;
     education_level_id: number;
-    positions: Position[];
+    positions?: Position[];
 }
