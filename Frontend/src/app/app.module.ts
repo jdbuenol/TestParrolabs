@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { CompanyService } from './services/company.service';
 import { ShowCompaniesComponent } from './components/show-companies/show-companies.component';
 import { ShowCompanyComponent } from './components/show-company/show-company.component';
+import { BaseComponentComponent } from './components/base-component/base-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShowCompaniesComponent,
-    ShowCompanyComponent
+    ShowCompanyComponent,
+    BaseComponentComponent
   ],
   imports: [
     BrowserModule,
