@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CompanyService } from './services/company.service';
 import { EmployeeService } from './services/employee.service';
+import { EducationLevelService } from './services/education-level.service';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ShowCompaniesComponent } from './components/show-companies/show-companies.component';
@@ -49,7 +50,7 @@ import { ShowEmployeesComponent } from './components/show-employees/show-employe
     MatInputModule,
     BrowserAnimationsModule
   ],
-  providers: [CompanyService, EmployeeService],
+  providers: [CompanyService, EmployeeService, EducationLevelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
