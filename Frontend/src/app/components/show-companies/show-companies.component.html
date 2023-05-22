@@ -1,33 +1,46 @@
 <app-toolbar></app-toolbar>
 <div class="container wrapper">
     <div class="row">
-        
         <!-- Issue table -->
-        <div class="col-md-12">
-            <div class="inner text-center">
-                <h3>My Companies</h3>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Company Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Zip Code</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let company of companies">
-                            <th scope="row"><a [routerLink]="['/show-company/', company.id]">{{company.id}}</a></th>
-                            <td>{{company.name}}</td>
-                            <td>{{company.address}}</td>
-                            <td>{{company.zipCode}}</td>
-                        </tr>
-                    </tbody>
+        <div class="col-md-12 text-center">
+            <h3><b>My Companies</b></h3>
+            <div class="inner text-center mat-elevation-z8">
+                <table mat-table [dataSource]="companies">
+                    <ng-container matColumnDef="Id">
+                        <th mat-header-cell *matHeaderCellDef> Id </th>
+                        <td mat-cell *matCellDef="let company"><a [routerLink]="['/show-company/', company.id]"> {{company.id}} </a></td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="CompanyName">
+                        <th mat-header-cell *matHeaderCellDef> Company Name </th>
+                        <td mat-cell *matCellDef="let company"> {{company.name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Address">
+                        <th mat-header-cell *matHeaderCellDef> Address </th>
+                        <td mat-cell *matCellDef="let company"> {{company.address}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ZipCode">
+                        <th mat-header-cell *matHeaderCellDef> Zip Code </th>
+                        <td mat-cell *matCellDef="let company"> {{company.zipCode}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="AvailablePositions">
+                        <th mat-header-cell *matHeaderCellDef> Available Positions </th>
+                        <td mat-cell *matCellDef="let company"> {{company.positions.length}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
                 </table>
             </div>
         </div>
-        <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary" [routerLink]="['/add-company/']">Add Company <i class="bi bi-plus-circle-fill"></i></button>
+        <div class="col-md-12 text-center" style="margin-top: 10px">
+            <button mat-fab extended color="primary" [routerLink]="['/add-company/']">
+                Add Compamy
+                <mat-icon>add_circle</mat-icon>
+            </button>
         </div>
     </div>
 </div>

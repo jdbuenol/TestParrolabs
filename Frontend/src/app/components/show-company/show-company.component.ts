@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from 'src/app/shared/company';
+import { Result } from 'src/app/shared/result';
+import { Position } from 'src/app/shared/position';
 
 @Component({
   selector: 'app-show-company',
@@ -10,9 +12,10 @@ import { Company } from 'src/app/shared/company';
 })
 export class ShowCompanyComponent implements OnInit{
   id: number = 0;
-  name: string = "";
-  address: string = "";
-  zipCode: string = "";
+  company: Company;
+  vacants: Position[];
+  occupied: Position[];
+  displayedColumns = ['Id', 'PositionRole', 'YearsExperience', 'Salary']
 
   ngOnInit() {
     this.loadCompany();
@@ -20,16 +23,24 @@ export class ShowCompanyComponent implements OnInit{
 
   constructor(
     public companyService: CompanyService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private ngZone: NgZone,
+    private router: Router
   ) {}
 
   loadCompany() {
     var id = parseInt(this.actRoute.snapshot.paramMap.get('id'));
     return this.companyService.GetCompany(id).subscribe((data: Company) => {
       this.id = data.id;
-      this.name = data.name;
-      this.address = data.address;
-      this.zipCode = data.zipCode;
+      this.company = data;
+    });
+  }
+
+  deleteCompany() {
+    var id = parseInt(this.actRoute.snapshot.paramMap.get('id'));
+    return this.companyService.DeleteCompany(id).subscribe((data: Result) => {
+      console.log("Company Deleted!");
+      this.ngZone.run(() => this.router.navigateByUrl('/show-companies'));
     });
   }
 }

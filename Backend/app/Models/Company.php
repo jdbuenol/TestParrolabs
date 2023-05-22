@@ -65,11 +65,4 @@ class Company extends BaseModel
     {
         return $this->positions;
     }
-
-    function getVacants()
-    {
-        return array_filter($this->positions, function($position, $key){
-            return $position->employee_id == null;
-        }, ARRAY_FILTER_USE_BOTH);
-    }
 }

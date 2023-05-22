@@ -7,12 +7,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CompanyService } from './services/company.service';
+import { EmployeeService } from './services/employee.service';
+
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ShowCompaniesComponent } from './components/show-companies/show-companies.component';
 import { ShowCompanyComponent } from './components/show-company/show-company.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
+import { EditCompanyComponent } from './components/edit-company/edit-company.component';
+import { ShowEmployeesComponent } from './components/show-employees/show-employees.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +31,9 @@ import { AddCompanyComponent } from './components/add-company/add-company.compon
     ShowCompaniesComponent,
     ShowCompanyComponent,
     ToolbarComponent,
-    AddCompanyComponent
+    AddCompanyComponent,
+    EditCompanyComponent,
+    ShowEmployeesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +41,15 @@ import { AddCompanyComponent } from './components/add-company/add-company.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
-  providers: [CompanyService],
+  providers: [CompanyService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

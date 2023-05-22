@@ -4,10 +4,47 @@
         <!-- Issue table -->
         <div class="col-md-12">
             <div class="inner text-center">
-                <h3>{{name}}</h3>
-                <b>Id: </b>{{id}}
-                <b>Address: </b>{{address}}
-                <b>Zip Code: </b>{{zipCode}}
+                <h3><b>{{company.name}}</b></h3>
+                <div style="display: flex; flex-direction: column;">
+                <p><b>Id: </b>{{id}}</p>
+                <p><b>Address: </b>{{company.address}}</p>
+                <p><b>Zip Code: </b>{{company.zipCode}}</p>
+                </div>
+                <button mat-fab extended [routerLink]="['/edit-company/', id]">
+                    <mat-icon>settings</mat-icon>
+                    Edit
+                </button>
+                <button mat-fab extended color="warn" (click)="deleteCompany()" style="margin-left: 4px;">
+                    <mat-icon>delete</mat-icon>
+                    Remove
+                </button>
+            </div>
+            <h3 class="inner text-center" style="margin-top: 10px;">Positions</h3>
+            <div class="inner text-center mat-elevation-z8">
+                <table mat-table [dataSource]="company.positions">
+                    <ng-container matColumnDef="Id">
+                        <th mat-header-cell *matHeaderCellDef> Id </th>
+                        <td mat-cell *matCellDef="let position">{{position.id}}</td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="PositionRole">
+                        <th mat-header-cell *matHeaderCellDef> Position Role </th>
+                        <td mat-cell *matCellDef="let position"> {{position.role}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="YearsExperience">
+                        <th mat-header-cell *matHeaderCellDef> Years Of Experience </th>
+                        <td mat-cell *matCellDef="let position"> {{position.yearsExperience}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Salary">
+                        <th mat-header-cell *matHeaderCellDef> Salary </th>
+                        <td mat-cell *matCellDef="let position"> {{position.salary}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
             </div>
         </div>
     </div>

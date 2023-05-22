@@ -1,0 +1,46 @@
+<app-toolbar></app-toolbar>
+<div class="container wrapper">
+    <div class="row">
+        <!-- Issue table -->
+        <div class="col-md-12 text-center">
+            <h3><b>Recorded Employees</b></h3>
+            <div class="inner text-center mat-elevation-z8">
+                <table mat-table [dataSource]="employees">
+                    <ng-container matColumnDef="Id">
+                        <th mat-header-cell *matHeaderCellDef> Id </th>
+                        <td mat-cell *matCellDef="let employee"><a> {{employee.id}} </a></td>
+                    </ng-container>
+                    
+                    <ng-container matColumnDef="EmployeeName">
+                        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="BirthDate">
+                        <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.birthDate}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="RecordDate">
+                        <th mat-header-cell *matHeaderCellDef> Record Date </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.recordDate}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="EducationLevel">
+                        <th mat-header-cell *matHeaderCellDef> Education Level </th>
+                        <td mat-cell *matCellDef="let employee"> {{employee.education_level_id}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12 text-center" style="margin-top: 10px">
+            <!--<button mat-fab extended color="primary" [routerLink]="['/add-company/']">
+                Add Compamy
+                <mat-icon>add_circle</mat-icon>
+            </button>-->
+        </div>
+    </div>
+</div>

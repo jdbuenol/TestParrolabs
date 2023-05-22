@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Company } from '../shared/company';
+import { Employee } from '../shared/employee';
 import { Result } from '../shared/result';
 import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService {
-  baseurl = environment['backendUrl'] + '/companies';
+export class EmployeeService {
+  baseurl = environment['backendUrl'] + '/employees';
   constructor(private http: HttpClient) {}
 
   httpOptions = {
@@ -19,27 +19,27 @@ export class CompanyService {
     })
   };
 
-  GetCompanies(): Observable<Company>{
-    return this.http.get<Company>(this.baseurl)
+  GetEmployees(): Observable<Employee>{
+    return this.http.get<Employee>(this.baseurl)
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  GetCompany(id: number): Observable<Company>{
-    return this.http.get<Company>(this.baseurl + '/' + id)
+  GetEmployee(id: number): Observable<Employee>{
+    return this.http.get<Employee>(this.baseurl + '/' + id)
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  CreateCompany(companyData: Company){
-    return this.http.post<Result>(this.baseurl, JSON.stringify(companyData), this.httpOptions)
+  CreateEmployee(employeeData: Employee){
+    return this.http.post<Result>(this.baseurl, JSON.stringify(employeeData), this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  UpdateCompany(id: number, companyData: Company){
-    return this.http.put<Result>(this.baseurl + '/' + id, JSON.stringify(companyData), this.httpOptions)
+  UpdateEmployee(id: number, employeeData: Employee){
+    return this.http.put<Result>(this.baseurl + '/' + id, JSON.stringify(employeeData), this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  DeleteCompany(id: number){
+  DeleteEmployee(id: number){
     return this.http.delete<Result>(this.baseurl + '/' + id, this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandl));
   }

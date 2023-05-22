@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-company.component.css']
 })
 export class AddCompanyComponent implements OnInit {
-  listForm: FormGroup;
+  companyForm: FormGroup;
 
   ngOnInit(): void {
     this.addCompany();
@@ -23,7 +23,7 @@ export class AddCompanyComponent implements OnInit {
   ) {}
 
   addCompany() {
-    this.listForm = this.fb.group({
+    this.companyForm = this.fb.group({
       company_name: [''],
       company_address: [''],
       company_zip_code: ['']
@@ -31,7 +31,13 @@ export class AddCompanyComponent implements OnInit {
   }
 
   submitForm() {
-    this.companyService.CreateCompany(this.listForm.value.company_name, this.listForm.value.company_address, this.listForm.value.company_zip_code).subscribe((res) => {
+    let formValue = this.companyForm.value;
+    let company_data = {
+      "name": formValue.company_name,
+      "address": formValue.company_address,
+      "zipCode": formValue.company_zip_code
+    }
+    this.companyService.CreateCompany(company_data).subscribe((res) => {
       console.log("Company Added!");
       this.ngZone.run(() => this.router.navigateByUrl('/show-companies'));
     });

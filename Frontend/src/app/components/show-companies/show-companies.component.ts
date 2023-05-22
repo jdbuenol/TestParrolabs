@@ -8,6 +8,7 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class ShowCompaniesComponent implements OnInit{
   companies: any = [];
+  displayedColumns = ['Id', 'CompanyName', 'Address', 'ZipCode', 'AvailablePositions']
 
   ngOnInit(): void {
     this.loadCompanies();
@@ -18,7 +19,10 @@ export class ShowCompaniesComponent implements OnInit{
   ) {}
 
   loadCompanies() {
-    return this.companyService.GetCompanies().subscribe((data: {}) => {
+    return this.companyService.GetCompanies().subscribe((data: any) => {
+      data.map(company => {
+        company.positions = company.positions.filter(position => position.startDate == null);
+      });
       this.companies = data;
     });
   }

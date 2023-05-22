@@ -10,13 +10,13 @@ class CompanyController extends BaseController
 {
     function readCompanies()
     {
-        $allCompanies = Company::all();
+        $allCompanies = Company::with(['positions'])->get();
         return $allCompanies;
     }
 
     function readCompany(int $id)
     {
-        $company = Company::find($id);
+        $company = Company::with(['positions'])->find($id);
         if($company == null){
             return response([
                 'error' => "NotFound",

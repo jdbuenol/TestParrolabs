@@ -3,8 +3,8 @@
     <div class="row">
         <!-- Form -->
         <div class="col-md-12 text-center">
-            <h3><b>Add Company</b></h3>
-            <form [formGroup]="companyForm" (ngSubmit)="submitForm()" novalidate style="display: flex; flex-direction: column;">
+            <h3><b>Edit Company</b></h3>
+            <form [formGroup]="updateCompanyForm" (ngSubmit)="submitForm()" novalidate style="display: flex; flex-direction: column;">
                 <mat-form-field>
                     <mat-label>Company Name</mat-label>
                     <input matInput type="text" formControlName="company_name" maxlength="40" style="margin-top: 5px">
