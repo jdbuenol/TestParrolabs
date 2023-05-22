@@ -11,7 +11,7 @@ class PositionController extends BaseController
 {
     function readPositions()
     {
-        $allPositions = Position::all();
+        $allPositions = Position::with(['company'])->get();
         return $allPositions;
     }
 
@@ -78,7 +78,7 @@ class PositionController extends BaseController
             return response([
                 'error' => 'NotModifiable',
                 'msg' => 'You can\'t modify a position already occupied by an employee'
-            ], 400);
+            ], 422);
         }
         else{
             if($request->role) $position->setRole($request->role);
@@ -113,14 +113,14 @@ class PositionController extends BaseController
             return response([
                 'error' => "NotModifiable",
                 'msg' => "You can't end a position that is still vacant"
-            ], 400);
+            ], 422);
         }
 
         if($position->getEndDate() == null){
             return response([
                 'error' => "NotModifiable",
                 'msg' => "This position has already closed"
-            ], 400);
+            ], 422);
         }
 
         $position->setEndDate(new DateTime());
