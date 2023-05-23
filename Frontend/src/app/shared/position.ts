@@ -1,5 +1,8 @@
+import { Company } from "./company";
+import { Employee } from "./employee";
+
 export class Position{
-    public id: number;
+    public id?: number;
     public role: string;
     public yearsExperience: number;
     public salary: number;
@@ -7,4 +10,6 @@ export class Position{
     public endDate?: Date;
     public company_id: number;
     public employee_id?: number;
+    public company?: Company;
+    public employee?: Employee;
 }

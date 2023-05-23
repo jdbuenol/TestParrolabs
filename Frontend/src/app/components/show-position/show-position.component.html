@@ -1,0 +1,36 @@
+<app-toolbar></app-toolbar>
+<div class="container wrapper">
+    <div class="row">
+        <!-- Issue table -->
+        <div class="col-md-12">
+            <ng-container *ngIf="position">
+                <div class="inner text-center">
+                    <h3><b>{{position.role}}</b></h3>
+                    <div style="display: flex; flex-direction: column;">
+                    <p><b>Id: </b>{{id}}</p>
+                    <p><b>Position Role: </b>{{position.role}}</p>
+                    <p><b>Years of Experience required: </b>{{position.yearsExperience}}</p>
+                    <p><b>Salary: </b>{{position.salary}}</p>
+                    <p *ngIf="position.startDate"><b>Start Date: </b>{{position.startDate}}</p>
+                    <p *ngIf="position.endDate"><b>End Date: </b>{{position.endDate}}</p>
+                    <p><b>Company: </b><a [routerLink]="['/show-company/', position.company_id]">{{position.company.name}}</a></p>
+                    <p *ngIf="position.employee_id"><b>Employee: </b><a [routerLink]="['/show-employee/', position.employee_id]">{{position.employee.name}}</a></p>
+                </div>
+                    <button mat-fab extended [routerLink]="['/edit-position/', id]" disabled="{{! position.startDate ? false : true}}">
+                        <mat-icon>settings</mat-icon>
+                        Edit
+                    </button>
+                    <button mat-fab extended color="warn" (click)="deletePosition()" style="margin-left: 4px;">
+                        <mat-icon>delete</mat-icon>
+                        Remove
+                    </button>
+                    <button mat-fab extended color="accent" (click)="endContract()" style="margin-left: 4px;" disabled="{{position.startDate && ! position.endDate ? false : true}}">
+                        <mat-icon>block</mat-icon>
+                        End Contract
+                    </button>
+                    <p class="ErrorMessage">{{endContractError}}</p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

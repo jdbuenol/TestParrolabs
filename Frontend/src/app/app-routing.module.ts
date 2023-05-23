@@ -9,6 +9,9 @@ import { ShowEmployeeComponent } from './components/show-employee/show-employee.
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { ShowPositionsComponent } from './components/show-positions/show-positions.component';
+import { ShowPositionComponent } from './components/show-position/show-position.component';
+import { AddPositionComponent } from './components/add-position/add-position.component';
+import { EditPositionComponent } from './components/edit-position/edit-position.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'show-companies'},
@@ -20,7 +23,10 @@ const routes: Routes = [
   { path: 'show-employee/:id', component: ShowEmployeeComponent },
   { path: 'add-employee', component: AddEmployeeComponent },
   { path: 'edit-employee/:id', component: EditEmployeeComponent },
-  { path: 'show-positions', component: ShowPositionsComponent }
+  { path: 'show-positions', component: ShowPositionsComponent },
+  { path: 'show-position/:id', component: ShowPositionComponent },
+  { path: 'add-position', component: AddPositionComponent },
+  { path: 'edit-position/:id', component: EditPositionComponent }
 ];
 
 @NgModule({

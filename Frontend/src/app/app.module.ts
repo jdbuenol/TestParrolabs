@@ -30,6 +30,9 @@ import { ShowEmployeeComponent } from './components/show-employee/show-employee.
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { ShowPositionsComponent } from './components/show-positions/show-positions.component';
+import { ShowPositionComponent } from './components/show-position/show-position.component';
+import { AddPositionComponent } from './components/add-position/add-position.component';
+import { EditPositionComponent } from './components/edit-position/edit-position.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { ShowPositionsComponent } from './components/show-positions/show-positio
     ShowEmployeeComponent,
     AddEmployeeComponent,
     EditEmployeeComponent,
-    ShowPositionsComponent
+    ShowPositionsComponent,
+    ShowPositionComponent,
+    AddPositionComponent,
+    EditPositionComponent
   ],
   imports: [
     BrowserModule,

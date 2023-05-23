@@ -20,12 +20,39 @@
                         Remove
                     </button>
                 </div>
-                <h3 class="inner text-center" style="margin-top: 10px;">Positions</h3>
+                <h3 class="inner text-center" style="margin-top: 10px;">Available Positions: {{vacants.length}}</h3>
                 <div class="inner text-center mat-elevation-z8">
-                    <table mat-table [dataSource]="company.positions">
+                    <table mat-table [dataSource]="vacants">
                         <ng-container matColumnDef="Id">
                             <th mat-header-cell *matHeaderCellDef> Id </th>
-                            <td mat-cell *matCellDef="let position">{{position.id}}</td>
+                            <td mat-cell *matCellDef="let position"><a [routerLink]="['/show-position/', position.id]">{{position.id}}</a></td>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="PositionRole">
+                            <th mat-header-cell *matHeaderCellDef> Position Role </th>
+                            <td mat-cell *matCellDef="let position"> {{position.role}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="YearsExperience">
+                            <th mat-header-cell *matHeaderCellDef> Years Of Experience </th>
+                            <td mat-cell *matCellDef="let position"> {{position.yearsExperience}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Salary">
+                            <th mat-header-cell *matHeaderCellDef> Salary </th>
+                            <td mat-cell *matCellDef="let position"> {{position.salary}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    </table>
+                </div>
+                <h3 class="inner text-center" style="margin-top: 10px;">Occupied Positions</h3>
+                <div class="inner text-center mat-elevation-z8">
+                    <table mat-table [dataSource]="occupied">
+                        <ng-container matColumnDef="Id">
+                            <th mat-header-cell *matHeaderCellDef> Id </th>
+                            <td mat-cell *matCellDef="let position"><a [routerLink]="['/show-position/', position.id]">{{position.id}}</a></td>
                         </ng-container>
                         
                         <ng-container matColumnDef="PositionRole">

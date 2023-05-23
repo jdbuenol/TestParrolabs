@@ -1,0 +1,46 @@
+<app-toolbar></app-toolbar>
+<div class="container wrapper wrapper2">
+    <div class="row">
+        <!-- Form -->
+        <div class="col-md-12 text-center">
+            <h3><b>Edit Vacant</b></h3>
+            <form [formGroup]="updatePositionForm" (ngSubmit)="submitForm()" novalidate style="display: flex; flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>Position Role</mat-label>
+                    <input matInput type="text" formControlName="position_role" maxlength="255" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{roleError}}</p>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Years of Experience</mat-label>
+                    <input matInput type="number" min="0" max="10" formControlName="position_years_experience" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{yearsExperienceError}}</p>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Salary</mat-label>
+                    <input matInput type="number" min="1200000" formControlName="position_salary" style="margin-top: 5px">
+                    <p class="ErrorMessage">{{salaryError}}</p>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Hiring Company</mat-label>
+                    <select matNativeControl formControlName="position_company_id">
+                        <option *ngFor="let company of companies" value="{{company.id}}">{{company.name}}</option>
+                    </select>
+                    <p class="ErrorMessage">{{companyError}}</p>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Assign Employee</mat-label>
+                    <select matNativeControl formControlName="position_employee_id">
+                        <option *ngFor="let employee of employees" value="{{employee.id}}">{{employee.name}}</option>
+                    </select>
+                    <p class="ErrorMessage">{{employeeError}}</p>
+                </mat-form-field>
+
+                <button mat-fab extended color="primary" style="width: 300px; align-self: center;">
+                    Submit
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+                <p class="ErrorMessage">{{positionError}}</p>
+            </form>
+        </div>
+    </div>
+</div>

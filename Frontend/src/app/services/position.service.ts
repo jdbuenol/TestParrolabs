@@ -39,6 +39,11 @@ export class PositionService {
     .pipe(retry(1), catchError(this.errorHandl));
   }
 
+  EndContract(id: number) {
+    return this.http.put<Result>(this.baseurl + '/' + id + '/endContract', {}, this.httpOptions)
+    .pipe(retry(1), catchError(this.errorHandl));
+  }
+
   DeletePosition(id: number){
     return this.http.delete<Result>(this.baseurl + '/' + id, this.httpOptions)
     .pipe(retry(1), catchError(this.errorHandl));

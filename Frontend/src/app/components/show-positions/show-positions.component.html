@@ -8,7 +8,7 @@
                 <table mat-table [dataSource]="positions">
                     <ng-container matColumnDef="Id">
                         <th mat-header-cell *matHeaderCellDef> Id </th>
-                        <td mat-cell *matCellDef="let position"><a [routerLink]="['/show-employee/', position.id]"> {{position.id}} </a></td>
+                        <td mat-cell *matCellDef="let position"><a [routerLink]="['/show-position/', position.id]"> {{position.id}} </a></td>
                     </ng-container>
                     
                     <ng-container matColumnDef="Role">
@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<button mat-fab extended color="primary" class="fab-button">
+<button mat-fab extended color="primary" class="fab-button" [routerLink]="['/add-position/']">
     Add Position
     <mat-icon>add_circle</mat-icon>
 </button>

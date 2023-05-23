@@ -13,8 +13,8 @@ import { Position } from 'src/app/shared/position';
 export class ShowCompanyComponent implements OnInit{
   id: number = 0;
   company: Company;
-  vacants: Position[];
-  occupied: Position[];
+  vacants: Position[] = [];
+  occupied: Position[] = [];
   displayedColumns = ['Id', 'PositionRole', 'YearsExperience', 'Salary']
 
   ngOnInit() {
@@ -33,6 +33,11 @@ export class ShowCompanyComponent implements OnInit{
     return this.companyService.GetCompany(id).subscribe((data: Company) => {
       this.id = data.id;
       this.company = data;
+      data.positions.forEach(position => {
+        if(position.employee_id == null) this.vacants.push(position);
+        else this.occupied.push(position);
+      });
+      console.log(this.vacants);
     });
   }
 
