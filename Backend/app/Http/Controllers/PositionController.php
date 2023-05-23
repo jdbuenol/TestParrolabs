@@ -17,7 +17,7 @@ class PositionController extends BaseController
 
     function readPosition(int $id)
     {
-        $position = Position::find($id);
+        $position = Position::with(['company', 'employee'])->find($id);
         if($position == null){
             return response([
                 'error' => "NotFound",
@@ -33,7 +33,7 @@ class PositionController extends BaseController
             $request, [
                 'role' => 'required|max:50',
                 'yearsExperience' => 'required|integer|between:0,10',
-                'salary' => 'required|integer|gt:1200000',
+                'salary' => 'required|integer|gte:1200000',
                 'company_id' => 'required|exists:companies,id'
             ]
         );
@@ -59,7 +59,7 @@ class PositionController extends BaseController
             $request, [
                 'role' => 'nullable|max:50',
                 'yearsExperience' => 'nullable|integer|between:0,10',
-                'salary' => 'nullable|integer|gt:1200000',
+                'salary' => 'nullable|integer|gte:1200000',
                 'employee_id' => 'nullable|exists:employees,id',
                 'company_id' => 'nullable|exists:companies,id'
             ]
@@ -116,7 +116,7 @@ class PositionController extends BaseController
             ], 422);
         }
 
-        if($position->getEndDate() == null){
+        if($position->getEndDate() != null){
             return response([
                 'error' => "NotModifiable",
                 'msg' => "This position has already closed"

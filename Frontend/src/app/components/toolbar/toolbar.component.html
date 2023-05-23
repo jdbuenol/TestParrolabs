@@ -1,7 +1,8 @@
 <mat-toolbar class="mat-elevation-z3">
-    <span>My Application</span>
-    <span class="spacer"></span>
-    <span><a [routerLink]="['/show-companies/']">Companies</a></span>
-    <span><a [routerLink]="['/show-employees/']">Employees</a></span>
-    <span><a [routerLink]="['/show-positions/']">Vacants</a></span>
+    <div style="display: flex; width: 100%;">
+        <p style="width: 25%">My Application</p>
+        <p style="width: 25%"><a [routerLink]="['/show-companies/']">Companies</a></p>
+        <p style="width: 25%"><a [routerLink]="['/show-employees/']">Employees</a></p>
+        <p><a [routerLink]="['/show-positions/']">Vacants</a></p>
+    </div>
 </mat-toolbar>
