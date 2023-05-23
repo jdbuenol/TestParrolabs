@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: parrolabs
+      MYSQL_USER: parrolabs
+      MYSQL_PASSWORD: parrolabs
+      MYSQL_ROOT_PASSWORD: root
+    command: mysqld --default-authentication-plugin=mysql_native_password
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    command: php -S backend:8000 -t public
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
